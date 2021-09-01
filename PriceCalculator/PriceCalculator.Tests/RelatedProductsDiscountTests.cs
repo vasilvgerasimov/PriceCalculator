@@ -9,7 +9,7 @@ namespace PriceCalculator.Tests
     public class RelatedProductsDiscountTests
     {
         [Fact]
-        public void RelatedProductsDiscountCalculate_ProductHasValidDiscount_DiscountIsAppliedCorrectly()
+        public void GetCalculatedDiscount_ProductHasValidDiscount_DiscountIsAppliedCorrectly()
         {
             //Arrange
             var relatedProductsDiscount = GetRelatedProductsDiscount();
@@ -30,7 +30,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountCalculate_OnePairOfRequiredProducts_TwoDiscountedProductsAdded_DiscountIsAppliedOnlyOnOneProduct()
+        public void GetCalculatedDiscount_OnePairOfRequiredProducts_TwoDiscountedProductsAdded_DiscountIsAppliedOnlyOnOneProduct()
         {
             // Arrange
             var relatedProductsDiscount = GetRelatedProductsDiscount();
@@ -56,7 +56,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountCalculate_TwoPairOfRequiredProducts_OneDiscountedProduct_DiscountIsAppliedOnlyOnce()
+        public void GetCalculatedDiscount_TwoPairOfRequiredProducts_OneDiscountedProduct_DiscountIsAppliedOnlyOnce()
         {
             // Arrange
             var relatedProductsDiscount = GetRelatedProductsDiscount();
@@ -76,7 +76,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountCalculate_ProductsAreEmpty_NoDiscountApplied()
+        public void GetCalculatedDiscount_ProductsAreEmpty_NoDiscountApplied()
         {
             // Arrange
             var relatedProductsDiscount = GetRelatedProductsDiscount();
@@ -91,7 +91,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountCalculate_ProductsAreNull_NoDiscountApplied()
+        public void GetCalculatedDiscount_ProductsAreNull_NoDiscountApplied()
         {
             // Arrange
             var relatedProductsDiscount = new RelatedProductsDiscount(new RequiredProduct("Item1", 2),
@@ -107,7 +107,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountConstructor_RequiredProduct_IsNull_ThrowsArgumentNullException()
+        public void Constructor_RequiredProduct_IsNull_ThrowsArgumentNullException()
         {
             //Arrange
             var discountedProduct = "Item3";
@@ -118,7 +118,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountConstructor_DiscountedProduct_IsNull_ThrowsArgumentNullException()
+        public void Constructor_DiscountedProduct_IsNull_ThrowsArgumentNullException()
         {
             //Arrange
             var requiredProduct = "Item1";
@@ -131,7 +131,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountConstructor_RequiredQuantityIsNegativeNumber_ThrowsArgumentException()
+        public void Constructor_RequiredQuantityIsNegativeNumber_ThrowsArgumentException()
         {
             //Arrange
             var requiredProduct = "Item1";
@@ -144,7 +144,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void RelatedProductsDiscountConstructor_DiscountPercentageIsNegativeNumber_ThrowsArgumentException()
+        public void Constructor_DiscountPercentageIsNegativeNumber_ThrowsArgumentException()
         {
             //Arrange
             var requiredProduct = "Item1";

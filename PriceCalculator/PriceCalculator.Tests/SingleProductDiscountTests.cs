@@ -13,7 +13,7 @@ namespace PriceCalculator.Tests
         [InlineData("item1", 20, 2, 0.4, "item1 20% off: -40p")]
         [InlineData("item1", 10, 10, 1, "item1 10% off: -£1.00")]
         [InlineData("item1", 0.5, 10, 0.05, "item1 0.5% off: -5p")]
-        public void SingleProductDiscountCalculate_ProductHasValidDiscount_DiscountIsAppliedCorrectly(string discountedProduct,decimal percentage,int quantity, decimal expectedPrice, string expectedText)
+        public void GetCalculatedDiscount_ProductHasValidDiscount_DiscountIsAppliedCorrectly(string discountedProduct,decimal percentage,int quantity, decimal expectedPrice, string expectedText)
         {
             // Arrange
             var singleProductDiscount = new SingleProductDiscount(discountedProduct, percentage);
@@ -32,7 +32,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void SingleProductDiscountCalculate_SeveralProductsAreGiven_DiscountIsAppliedOnlyOnCorrectProduct()
+        public void GetCalculatedDiscount_SeveralProductsAreGiven_DiscountIsAppliedOnlyOnCorrectProduct()
         {
             // Arrange
             var singleProductDiscount = new SingleProductDiscount("Item1", 10);
@@ -50,7 +50,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void SingleProductDiscountCalculate_SeveralProductsAreGivenWithoutDiscount_DiscountIsNotApplied()
+        public void GetCalculatedDiscount_SeveralProductsAreGivenWithoutDiscount_DiscountIsNotApplied()
         {
             // Arrange
             var singleProductDiscount = new SingleProductDiscount("Item1", 10);
@@ -68,7 +68,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void SingleProductDiscountConstructor_DiscountedProduct_IsNull_ThrowsArgumentException()
+        public void Constructor_DiscountedProduct_IsNull_ThrowsArgumentException()
         {
             //arrange
             string discountedProduct = null;
@@ -79,7 +79,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void SingleProductDiscountConstructor_DiscountedPercentage_LessThen0_ThrowsArgumentException()
+        public void Constructor_DiscountedPercentage_LessThen0_ThrowsArgumentException()
         {
             //arrange
             var discountedProduct = "Item1";

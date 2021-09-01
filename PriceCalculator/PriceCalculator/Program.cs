@@ -19,11 +19,11 @@ namespace PriceCalculator
         private static ServiceProvider RegisterServices()
         {
             var services = new ServiceCollection();
-            services.AddTransient<IPriceCalculator, PriceCalculator>();
-            services.AddTransient<IInputValidator, InputValidator>();
-            services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IDiscountService, DiscountService>();
-            services.AddTransient<IOutputWriter, OutputWriter>();
+            services.AddSingleton<IPriceCalculator, PriceCalculator>();
+            services.AddSingleton<IInputValidator, InputValidator>();
+            services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<IDiscountService, DiscountService>();
+            services.AddSingleton<IOutputWriter, OutputWriter>();
             return services.BuildServiceProvider(true);
         }
     }

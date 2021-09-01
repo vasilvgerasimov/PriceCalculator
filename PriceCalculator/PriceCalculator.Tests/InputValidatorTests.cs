@@ -17,7 +17,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void InputValidatorValidate_EmptyProductsAreGiven_ReturnAnErrorForEmptyProducts()
+        public void Validate_EmptyProductsAreGiven_ReturnAnErrorForEmptyProducts()
         {
             //Arrange
             var validator = new InputValidator(_fakeProductService);
@@ -31,7 +31,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void InputValidatorValidate_ProductNotExistInTheSystem_ShowErrorForInvalidProduct()
+        public void Validate_ProductNotExistInTheSystem_ShowErrorForInvalidProduct()
         {
             //Arrange
             var validator = new InputValidator(_fakeProductService);
@@ -47,7 +47,7 @@ namespace PriceCalculator.Tests
        
 
         [Fact]
-        public void InputValidatorValidate_ValidProductIsGiven_NoErrorsReturned()
+        public void Validate_ValidProductIsGiven_NoErrorsReturned()
         {
             //Arrange
             var validator = new InputValidator(_fakeProductService);
@@ -62,7 +62,7 @@ namespace PriceCalculator.Tests
 
 
         [Fact]
-        public void InputValidatorConstructor_ProductServiceIsNull_ThrowArgumentNullException()
+        public void Constructor_ProductServiceIsNull_ThrowArgumentNullException()
         {
             //Arrange
             IProductService productService = null;
@@ -71,7 +71,6 @@ namespace PriceCalculator.Tests
             Assert.Throws<ArgumentNullException>(() => new InputValidator(productService));
             
         }
-
 
         private void SetupProductService()
         {

@@ -12,7 +12,7 @@ namespace PriceCalculator.Tests
     public class ShoppingBasketTests
     {
         [Fact]
-        public void ShoppingBasketDiscounts_ThereIsNoDiscountWithPriceGreaterThen0_ThereIsNoDiscountApplied()
+        public void GetRelevantDiscounts_ThereIsNoDiscountWithPriceGreaterThen0_ThereIsNoDiscountApplied()
         {
             // Arrange
             var products = GetQuantityContainer();
@@ -40,7 +40,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void ShoppingBasketGetDiscounts_StrategyCalculatedDiscountIsCalledOnce_TheSameDiscountIsReturned()
+        public void GetRelevantDiscounts_StrategyCalculatedDiscountIsCalledOnce_TheSameDiscountIsReturned()
         {
             // Arrange
             var products = GetQuantityContainer();
@@ -67,7 +67,7 @@ namespace PriceCalculator.Tests
 
 
         [Fact]
-        public void ShoppingBasketGetDiscounts_InvalidDiscountsParameter_ThrowArgumentException()
+        public void GetCalculatedDiscount_InvalidDiscountsParameter_ThrowArgumentException()
         {
             // Arrange
             IProductDiscountStrategy[] discount = null;
@@ -78,7 +78,7 @@ namespace PriceCalculator.Tests
 
 
         [Fact]
-        public void ShoppingBasketGetConstructor_NoProductsGiven_NoDiscount()
+        public void Constructor_NoProductsGiven_NoDiscount()
         {
             // Arrange
             var products = GetQuantityContainer();
@@ -98,7 +98,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void ShoppingBasketGetConstructor_EmptyProductsGiven_ThrowArgumentException()
+        public void Constructor_EmptyProductsGiven_ThrowArgumentException()
         {
             // Arrange
             var discountStrategies = new IProductDiscountStrategy[0];
@@ -116,7 +116,7 @@ namespace PriceCalculator.Tests
 
 
         [Fact]
-        public void ShoppingBasketSubtotals_GivenProductsWithDiscount_NoDiscountApplied()
+        public void Subtotals_GivenProductsWithDiscount_NoDiscountApplied()
         {
             // Arrange
             var products = new[]
