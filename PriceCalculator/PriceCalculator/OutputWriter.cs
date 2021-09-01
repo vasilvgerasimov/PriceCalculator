@@ -5,12 +5,6 @@ using PriceCalculator.Extensions;
 
 namespace PriceCalculator
 {
-    public interface IOutputWriter
-    {
-        void ShowReceipt(decimal subTotal, IEnumerable<RelevantDiscount> discounts, decimal totalPrice);
-        void ShowErrors(string[] errors);
-    }
-
     public class OutputWriter : IOutputWriter
     {
         public void ShowReceipt(decimal subTotal, IEnumerable<RelevantDiscount> discounts, decimal totalPrice)
@@ -23,7 +17,7 @@ namespace PriceCalculator
             Console.WriteLine($"Total UnitPrice : {totalPrice.ToCurrencyWithPence()}");
             Console.ReadLine();
         }
-        public void ShowErrors(string[] errors)
+        public void ShowErrors(IEnumerable<string> errors)
         {
             foreach (var error in errors)
             {

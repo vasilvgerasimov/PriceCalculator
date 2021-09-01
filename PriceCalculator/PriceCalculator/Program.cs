@@ -15,7 +15,6 @@ namespace PriceCalculator
             serviceProvider.GetService<IPriceCalculator>().Run(args);
         }
 
-
         private static ServiceProvider RegisterServices()
         {
             var services = new ServiceCollection();

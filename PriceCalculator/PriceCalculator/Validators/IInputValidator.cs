@@ -1,7 +1,9 @@
-﻿namespace PriceCalculator.Validators
+﻿using System.Collections.Generic;
+
+namespace PriceCalculator.Validators
 {
     public interface IInputValidator
     {
-        string[] Validate(string[] products);
+        IEnumerable<string> Validate(string[] products);
     }
 }

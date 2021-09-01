@@ -17,7 +17,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void Validate_EmptyProductsAreGiven_ReturnAnErrorForEmptyProducts()
+        public void Validate_EmptyProductsAreGiven_ReturnAsResultErrorForEmptyProducts()
         {
             //Arrange
             var validator = new InputValidator(_fakeProductService);
@@ -31,7 +31,7 @@ namespace PriceCalculator.Tests
         }
 
         [Fact]
-        public void Validate_ProductNotExistInTheSystem_ShowErrorForInvalidProduct()
+        public void Validate_ProductNotExistInTheSystem_ReturnAsResultForInvalidProduct()
         {
             //Arrange
             var validator = new InputValidator(_fakeProductService);
@@ -41,8 +41,8 @@ namespace PriceCalculator.Tests
             var errors = validator.Validate(new[] { "NoItem", "SecondItem" });
 
             //Assert
-            Assert.Equal("Product NoItem is not valid. You can order: item1,item2,item3,item4.", errors[0]);
-            Assert.Equal("Product SecondItem is not valid. You can order: item1,item2,item3,item4.", errors[1]);
+            Assert.Equal("Product NoItem is not valid. You can order: item1,item2,item3,item4.", errors.ElementAt(0));
+            Assert.Equal("Product SecondItem is not valid. You can order: item1,item2,item3,item4.", errors.ElementAt(1));
         }
        
 

@@ -49,12 +49,6 @@ namespace PriceCalculator.Tests
             Assert.Equal("Item1 give Item2 50% off: -£5.00", discount.Text);
         }
 
-        private static RelatedProductsDiscount GetRelatedProductsDiscount()
-        {
-            return new RelatedProductsDiscount(new RequiredProduct("Item1", 2),
-                "Item2", 50);
-        }
-
         [Fact]
         public void GetCalculatedDiscount_TwoPairOfRequiredProducts_OneDiscountedProduct_DiscountIsAppliedOnlyOnce()
         {
@@ -94,8 +88,7 @@ namespace PriceCalculator.Tests
         public void GetCalculatedDiscount_ProductsAreNull_NoDiscountApplied()
         {
             // Arrange
-            var relatedProductsDiscount = new RelatedProductsDiscount(new RequiredProduct("Item1", 2),
-                "Item2", 50);
+            var relatedProductsDiscount = GetRelatedProductsDiscount();
 
             QuantityContainer[] products = null;
 
@@ -154,6 +147,12 @@ namespace PriceCalculator.Tests
 
             //Act & Assert
             Assert.Throws<ArgumentException>(() => new RelatedProductsDiscount(new RequiredProduct(requiredProduct, requiredQuantity), discountedProduct, discountPercentage));
+        }
+
+        private static RelatedProductsDiscount GetRelatedProductsDiscount()
+        {
+            return new RelatedProductsDiscount(new RequiredProduct("Item1", 2),
+                "Item2", 50);
         }
     }
 }

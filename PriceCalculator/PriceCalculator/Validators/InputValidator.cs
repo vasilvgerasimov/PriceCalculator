@@ -12,13 +12,13 @@ namespace PriceCalculator.Validators
         {
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
         }
-        public string[] Validate(string[] products)
+        public IEnumerable<string> Validate(string[] products)
         {
             var errors = new List<string>();
             if(products==null || !products.Any())
             {
                 errors.Add("The basket is empty. Please add some products.");
-                return errors.ToArray();
+                return errors;
             }
 
             var availableProducts = _productService.GetExistingProducts().Select(s => s.Type.ToLower().Trim());
@@ -30,7 +30,7 @@ namespace PriceCalculator.Validators
                 }                
             }
 
-            return errors.ToArray();
+            return errors;
         }
     }
 }
